@@ -1,5 +1,6 @@
 import { SanityImageSource } from "@sanity/image-url/lib/types/types";
 import Image from "next/image";
+import Link from "next/link";
 import React from "react";
 import { urlFor } from "../lib/client";
 import { Pizza } from "../sanity-backend/schemaTypes";
@@ -23,10 +24,11 @@ const Menu = ({ pizzas }: IProps) => {
           const src = urlFor(pizza.image as SanityImageSource).url();
           return (
             <div className={css.pizza} key={pizza._id}>
-              <div className={css.imageWrapper}>
-                <Image loader={() => src} src={src} alt="" objectFit="cover" layout="fill" />
-              </div>
-
+              <Link href={`/pizza/${pizza.slug?.current}`}>
+                <div className={css.imageWrapper}>
+                  <Image loader={() => src} src={src} alt="" objectFit="cover" layout="fill" />
+                </div>
+              </Link>
               <span>{pizza.name}</span>
               <span>
                 <span style={{ color: "var(--themeRed)" }}>$</span> {pizza.price?.[1]}
