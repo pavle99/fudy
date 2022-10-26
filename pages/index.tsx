@@ -7,9 +7,13 @@ import { client } from "../lib/client";
 import css from "../styles/Home.module.css";
 
 import { Pizza } from "../sanity-backend/schemaTypes";
+import Menu from "../components/Menu";
 
-const Home = ({ pizzas }: { pizzas: Pizza[] }) => {
-  console.log(pizzas);
+interface IProps {
+  pizzas: Pizza[];
+}
+
+const Home = ({ pizzas }: IProps) => {
   return (
     <Layout>
       <div className={css.container}>
@@ -22,6 +26,7 @@ const Home = ({ pizzas }: { pizzas: Pizza[] }) => {
         <main>
           <Hero />
           <Services />
+          <Menu pizzas={pizzas} />
         </main>
       </div>
     </Layout>
