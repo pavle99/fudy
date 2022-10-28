@@ -7,12 +7,21 @@ import { Pizza } from "../../sanity-backend/schemaTypes";
 import css from "../../styles/Pizza.module.css";
 import LeftArrow from "../../assets/arrowLeft.png";
 import RightArrow from "../../assets/arrowRight.png";
+import { useStore } from "../../store/store";
+import toast, { Toaster } from "react-hot-toast";
 
 const Pizza = ({ pizza }: { pizza: Pizza }) => {
   const src = urlFor(pizza.image as SanityImageSource).url();
 
   const [size, setSize] = React.useState(1);
   const [quantity, setQuantity] = React.useState(1);
+
+  const addPizza = useStore((state) => state.addPizza);
+
+  const addToCart = () => {
+    addPizza({ ...pizza, price: pizza.price?.[size], quantity: quantity, size: size });
+    toast.success("Added to Cart");
+  };
 
   return (
     <Layout>
@@ -67,8 +76,11 @@ const Pizza = ({ pizza }: { pizza: Pizza }) => {
             </div>
           </div>
 
-          <div className={`btn ${css.btn}`}>Add to Cart</div>
+          <div className={`btn ${css.btn}`} onClick={addToCart}>
+            Add to Cart
+          </div>
         </div>
+        <Toaster />
       </div>
     </Layout>
   );
