@@ -49,7 +49,7 @@ export interface Pizza extends SanityDocument {
    *
    *
    */
-  image?: {
+  image: {
     _type: "image";
     asset: SanityReference<SanityImageAsset>;
     crop?: SanityImageCrop;
@@ -61,21 +61,21 @@ export interface Pizza extends SanityDocument {
    *
    *
    */
-  name?: string;
+  name: string;
 
   /**
    * slug — `slug`
    *
    *
    */
-  slug?: { _type: "slug"; current: string };
+  slug: { _type: "slug"; current: string };
 
   /**
    * price — `array`
    *
    *
    */
-  price?: Array<SanityKeyed<number>>;
+  price: Array<SanityKeyed<number>>;
 
   /**
    * details — `string`

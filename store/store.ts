@@ -2,22 +2,37 @@ import create from "zustand";
 import { devtools, persist } from "zustand/middleware";
 import { Pizza } from "../sanity-backend/schemaTypes";
 
+interface PizzaItem {
+  pizza: Pizza;
+  price: number;
+  quantity: number;
+  size: number;
+}
 interface ICart {
-  addPizza: (pizza: Pizza) => void;
+  addPizzaItem: (pizzaItem: PizzaItem) => void;
   cart: {
-    pizzas: Pizza[];
+    pizzaItems: PizzaItem[];
   };
+  removePizzaItem: (idx: number) => void;
 }
 
 export const useStore = create<ICart>()((set) => ({
   cart: {
-    pizzas: [],
+    pizzaItems: [],
   },
 
-  addPizza: (data: Pizza) => {
+  addPizzaItem: (data: PizzaItem) => {
     set((state) => ({
       cart: {
-        pizzas: [...state.cart.pizzas, data],
+        pizzaItems: [...state.cart.pizzaItems, data],
+      },
+    }));
+  },
+
+  removePizzaItem: (idx: number) => {
+    set((state) => ({
+      cart: {
+        pizzaItems: state.cart.pizzaItems.filter((item, index) => index !== idx),
       },
     }));
   },

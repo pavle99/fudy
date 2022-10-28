@@ -16,10 +16,9 @@ const Pizza = ({ pizza }: { pizza: Pizza }) => {
   const [size, setSize] = React.useState(1);
   const [quantity, setQuantity] = React.useState(1);
 
-  const addPizza = useStore((state) => state.addPizza);
-
+  const addPizzaItem = useStore((state) => state.addPizzaItem);
   const addToCart = () => {
-    addPizza({ ...pizza, price: pizza.price?.[size], quantity: quantity, size: size });
+    addPizzaItem({ pizza: { ...pizza }, price: pizza.price[size], quantity: quantity, size: size });
     toast.success("Added to Cart");
   };
 
