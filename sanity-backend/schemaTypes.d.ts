@@ -82,7 +82,51 @@ export interface Pizza extends SanityDocument {
    *
    *
    */
-  details?: string;
+  details: string;
 }
 
-export type Documents = Pizza;
+/**
+ * order
+ *
+ *
+ */
+export interface Order extends SanityDocument {
+  _type: "order";
+
+  /**
+   * name — `string`
+   *
+   *
+   */
+  name: string;
+
+  /**
+   * phone — `string`
+   *
+   *
+   */
+  phone: string;
+
+  /**
+   * address — `string`
+   *
+   *
+   */
+  address: string;
+
+  /**
+   * total — `number`
+   *
+   *
+   */
+  total: number;
+
+  /**
+   * status — `number`
+   *
+   *
+   */
+  status: number;
+}
+
+export type Documents = Pizza | Order;
