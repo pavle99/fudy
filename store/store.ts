@@ -14,6 +14,7 @@ interface ICart {
     pizzaItems: PizzaItem[];
   };
   removePizzaItem: (idx: number) => void;
+  resetCart: () => void;
 }
 
 export const useStore = create<ICart>()((set) => ({
@@ -33,6 +34,14 @@ export const useStore = create<ICart>()((set) => ({
     set((state) => ({
       cart: {
         pizzaItems: state.cart.pizzaItems.filter((item, index) => index !== idx),
+      },
+    }));
+  },
+
+  resetCart: () => {
+    set(() => ({
+      cart: {
+        pizzaItems: [],
       },
     }));
   },

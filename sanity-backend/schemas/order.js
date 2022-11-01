@@ -28,6 +28,11 @@ export default {
       },
     },
     {
+      name: "method",
+      title: "method",
+      type: "number",
+    },
+    {
       name: "total",
       title: "total",
       type: "number",

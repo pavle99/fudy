@@ -36,96 +36,27 @@ export type {
   SanityImagePaletteSwatch,
 };
 
-/**
- * pizza
- *
- *
- */
 export interface Pizza extends SanityDocument {
   _type: "pizza";
-
-  /**
-   * image — `image`
-   *
-   *
-   */
   image: {
     _type: "image";
     asset: SanityReference<SanityImageAsset>;
     crop?: SanityImageCrop;
     hotspot?: SanityImageHotspot;
   };
-
-  /**
-   * name — `string`
-   *
-   *
-   */
   name: string;
-
-  /**
-   * slug — `slug`
-   *
-   *
-   */
   slug: { _type: "slug"; current: string };
-
-  /**
-   * price — `array`
-   *
-   *
-   */
   price: Array<SanityKeyed<number>>;
-
-  /**
-   * details — `string`
-   *
-   *
-   */
   details: string;
 }
 
-/**
- * order
- *
- *
- */
 export interface Order extends SanityDocument {
   _type: "order";
-
-  /**
-   * name — `string`
-   *
-   *
-   */
   name: string;
-
-  /**
-   * phone — `string`
-   *
-   *
-   */
   phone: string;
-
-  /**
-   * address — `string`
-   *
-   *
-   */
   address: string;
-
-  /**
-   * total — `number`
-   *
-   *
-   */
+  method: number;
   total: number;
-
-  /**
-   * status — `number`
-   *
-   *
-   */
   status: number;
 }
 
