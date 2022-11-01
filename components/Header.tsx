@@ -2,12 +2,19 @@ import Image from "next/image";
 import React from "react";
 import css from "../styles/Header.module.css";
 import Logo from "../assets/Logo.png";
-import { UilShoppingBag } from "@iconscout/react-unicons";
+import { UilReceipt, UilShoppingBag } from "@iconscout/react-unicons";
 import { useStore } from "../store/store";
 import Link from "next/link";
 
 const Header = () => {
   const items = useStore((state) => state.cart.pizzaItems.length);
+
+  const [order, setOrder] = React.useState("");
+
+  React.useEffect(() => {
+    setOrder(localStorage.getItem("order") ?? "");
+  }, []);
+
   return (
     <div className={css.header}>
       <div className={css.logo}>
@@ -16,7 +23,9 @@ const Header = () => {
       </div>
 
       <ul className={css.menu}>
-        <li>Home</li>
+        <li>
+          <Link href="/">Home</Link>
+        </li>
         <li>Menu</li>
         <li>Contact</li>
       </ul>
@@ -28,6 +37,15 @@ const Header = () => {
             <div className={css.badge}>{items}</div>
           </div>
         </Link>
+
+        {order && (
+          <Link href={`/order/${order}`}>
+            <div className={css.cart}>
+              <UilReceipt size={35} color="#2E2E2E" />
+              <div className={css.badge}>!</div>
+            </div>
+          </Link>
+        )}
       </div>
     </div>
   );

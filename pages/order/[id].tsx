@@ -10,6 +10,12 @@ import Onway from "../../assets/onway.png";
 import Spinner from "../../assets/spinner.svg";
 
 const Order = ({ order }: { order: Order }) => {
+  React.useEffect(() => {
+    if (order.status > 3) {
+      localStorage.clear();
+    }
+  }, [order]);
+
   return (
     <Layout>
       <div className={css.container}>
