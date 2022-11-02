@@ -57,15 +57,17 @@ const Cart = () => {
       <div className={css.container}>
         <div className={css.details}>
           <table className={css.table}>
-            <tr>
-              <th>Pizza</th>
-              <th>Name</th>
-              <th>Size</th>
-              <th>Price</th>
-              <th>Quantity</th>
-              <th>Total</th>
-              <th></th>
-            </tr>
+            <thead>
+              <tr>
+                <th>Pizza</th>
+                <th>Name</th>
+                <th>Size</th>
+                <th>Price</th>
+                <th>Quantity</th>
+                <th>Total</th>
+                <th></th>
+              </tr>
+            </thead>
             <tbody className={css.tbody}>
               {cartData.pizzaItems.length > 0 &&
                 cartData.pizzaItems.map((pizzaItem, index) => {
@@ -119,9 +121,9 @@ const Cart = () => {
         </div>
       </div>
 
-      <Toaster />
-
       <OrderModal opened={paymentMethod === 0} setOpened={setPaymentMethod} paymentMethod={paymentMethod} />
+
+      <Toaster />
     </Layout>
   );
 };

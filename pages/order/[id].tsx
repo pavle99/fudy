@@ -102,7 +102,7 @@ const Order = ({ order }: { order: Order }) => {
 
 export default Order;
 
-export const getServerSideProps = async ({ params: { id } }: any) => {
+export const getServerSideProps = async ({ params: { id } }: { params: { id: string } }) => {
   const order = await client.fetch<Order>(`*[_type == "order" && _id == '${id}'][0]`);
   return {
     props: {

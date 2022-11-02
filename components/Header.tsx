@@ -1,8 +1,6 @@
-import Image from "next/image";
 import React from "react";
 import css from "../styles/Header.module.css";
-import Logo from "../assets/Logo.png";
-import { UilReceipt, UilShoppingBag } from "@iconscout/react-unicons";
+import { UilPizzaSlice, UilReceipt, UilShoppingBag } from "@iconscout/react-unicons";
 import { useStore } from "../store/store";
 import Link from "next/link";
 
@@ -18,7 +16,7 @@ const Header = () => {
   return (
     <div className={css.header}>
       <div className={css.logo}>
-        <Image src={Logo} alt="" width={70} height={70} />
+        <UilPizzaSlice width={70} height={70} color="#f54748" />
         <span>FUDY</span>
       </div>
 
@@ -33,7 +31,7 @@ const Header = () => {
       <div className={css.rightSide}>
         <Link href="/cart">
           <div className={css.cart}>
-            <UilShoppingBag size={35} color="#2E2E2E" />
+            <UilShoppingBag size={35} />
             <div className={css.badge}>{items}</div>
           </div>
         </Link>
@@ -41,7 +39,7 @@ const Header = () => {
         {order && (
           <Link href={`/order/${order}`}>
             <div className={css.cart}>
-              <UilReceipt size={35} color="#2E2E2E" />
+              <UilReceipt size={35} />
               <div className={css.badge}>!</div>
             </div>
           </Link>

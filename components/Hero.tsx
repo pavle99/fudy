@@ -50,7 +50,7 @@ const Hero = () => {
           <div className={css.details}>
             <span>Italian Pizza</span>
             <span>
-              <span style={{ color: "var(--themeRed)" }}>$</span> 7.49
+              <span style={{ color: "var(--themeRed)" }}>$</span> 14.99
             </span>
           </div>
         </div>

@@ -46,6 +46,11 @@
   z-index: 99;
 }
 
+.cart:hover {
+  color: var(--themeRed);
+  scale: 1.1;
+}
+
 .badge {
   position: absolute;
   display: flex;

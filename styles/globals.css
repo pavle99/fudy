@@ -53,9 +53,15 @@ a {
   width: max-content;
   padding: 1rem;
   border-radius: 4rem;
-  border: none;
+  border: 2px solid transparent;
   color: white;
   font-size: 1.1rem;
   cursor: pointer;
   background-color: var(--themeRed);
+}
+
+.btn:hover {
+  background-color: white;
+  color: var(--themeRed);
+  border: 2px solid var(--themeRed);
 }

@@ -26,7 +26,7 @@ const Menu = ({ pizzas }: IProps) => {
             <div className={css.pizza} key={pizza._id}>
               <Link href={`/pizza/${pizza.slug?.current}`}>
                 <div className={css.imageWrapper}>
-                  <Image loader={() => src} src={src} alt="" objectFit="cover" layout="fill" />
+                  <Image loader={() => src} src={src} alt="" objectFit="cover" layout="fill" unoptimized />
                 </div>
               </Link>
               <span>{pizza.name}</span>

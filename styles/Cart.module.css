@@ -67,3 +67,8 @@
   color: var(--themeRed);
   border: 2px solid var(--themeRed);
 }
+
+.buttons > :nth-child(1):hover {
+  background-color: var(--themeRed);
+  color: white;
+}

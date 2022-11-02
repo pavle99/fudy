@@ -23,8 +23,6 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
             .replace("image-", "https://cdn.sanity.io/images/3f6l2wv1/production/")
             .replace("-jpg", ".jpg");
 
-          console.log(newImg);
-
           return {
             price_data: {
               currency: "usd",

@@ -1,7 +1,7 @@
 import { Modal, useMantineTheme } from "@mantine/core";
 import { useRouter } from "next/router";
 import React from "react";
-import toast, { Toaster } from "react-hot-toast";
+import toast from "react-hot-toast";
 import { createOrder } from "../lib/orderHandler";
 import { useStore } from "../store/store";
 import css from "../styles/OrderModal.module.css";
@@ -63,8 +63,6 @@ const OrderModal = ({ opened, setOpened, paymentMethod }: IProps) => {
           Place Order
         </button>
       </form>
-
-      <Toaster />
     </Modal>
   );
 };

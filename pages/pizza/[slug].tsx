@@ -95,7 +95,7 @@ export async function getStaticPaths() {
   };
 }
 
-export async function getStaticProps({ params: { slug = "" } }: any) {
+export async function getStaticProps({ params: { slug = "" } }: { params: { slug: string } }) {
   const pizza = await client.fetch<Pizza>(`*[_type == "pizza" && slug.current == '${slug}'][0]`);
   return {
     props: {
