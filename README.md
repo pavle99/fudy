@@ -1,34 +1,96 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# Fudy
 
-## Getting Started
+![Fudy](https://<enter_image>.png)
 
-First, run the development server:
+## Table of Contents
+
+- [Introduction](#prerequisites)
+- [Link to website demo](#installation)
+- [Tech Stack](#tech-stack)
+- [Prerequisites](#prerequisites)
+- [Installation](#installation)
+- [Running the application](#running-the-application)
+
+## Introduction
+
+A desktop-friendly fullstack pizza delivery website focused on beautiful UI using pure CSS with the ability to order pizzas and track your order, built with Sanity.io and React framework Next.js, using modern global state manager Zustand and Stripe integration for online payments.
+
+## Link to website demo
+
+[Fudy](https:/<enter_url>/)
+
+## Tech Stack
+
+- [TypeScript](https://www.typescriptlang.org/)
+- [Next.js](https://nextjs.org/)
+- [Sanity.io](https://www.sanity.io/)
+- [Zustand](https://github.com/pmndrs/zustand/)
+
+## Prerequisites
+
+Install the following prerequisites:
+
+1. [Node.js 18.17.0 or higher](https://nodejs.org/en/)
+2. [Visual Studio Code](https://code.visualstudio.com/download)
+
+## Installation
+
+### Backend
+
+#### 1. Install dependencies
+
+From the **root** directory run:
 
 ```bash
-npm run dev
-# or
-yarn dev
+cd sanity-backend
+npm install
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+#### 2. Start Sanity
 
-You can start editing the page by modifying `pages/index.tsx`. The page auto-updates as you edit the file.
+From the **root** directory run:
 
-[API routes](https://nextjs.org/docs/api-routes/introduction) can be accessed on [http://localhost:3000/api/hello](http://localhost:3000/api/hello). This endpoint can be edited in `pages/api/hello.ts`.
+```bash
+sanity start
+```
 
-The `pages/api` directory is mapped to `/api/*`. Files in this directory are treated as [API routes](https://nextjs.org/docs/api-routes/introduction) instead of React pages.
+#### 3. Get your project API key
 
-## Learn More
+1. Go to [manage.sanity.io](https://manage.sanity.io/)
+2. Click on your project
+3. Click on the **Settings** tab
+4. Click on **API** on the left
+5. Click on **Create new token**
+6. Copy the token
+7. Paste it into the required variable inside the .env file
 
-To learn more about Next.js, take a look at the following resources:
+### Frontend
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+#### 1. Install dependencies
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
+From the **root** directory run:
 
-## Deploy on Vercel
+```bash
+cd frontend
+npm install
+```
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+#### 2. Get Stripe API key
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+1. Go to [stripe.com](https://stripe.com/)
+2. Create an account
+3. Click on **Dashboard**
+4. Click on **Developers**
+5. Click on **API keys**
+6. Click on **Reveal test key** to reveal your secret key
+7. Copy the secret key
+8. Paste it into the required variable inside the .env file
+
+## Running the application
+
+Since you already started sanity, all you need to do is run the frontend:
+
+```bash
+cd frontend
+npm run dev
+```

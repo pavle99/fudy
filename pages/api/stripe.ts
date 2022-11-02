@@ -3,8 +3,7 @@ import Stripe from "stripe";
 import { Pizza } from "../../sanity-backend/schemaTypes";
 import { PizzaItem } from "../../store/store";
 
-const stripe = new Stripe(
-  "sk_test_51LpFnjF8TXjSP8fdQ7admB88HcntPApGwFn9J4AcOUCbFnV1nXd03cnjBMfjAl1AvAyevC1DpzwPTUkS417ex6hT00ajZjAsGJ",
+const stripe = new Stripe(process.env.NEXT_PUBLIC_STRIPE_API_KEY || "",
   {
     apiVersion: "2020-08-27",
   }
