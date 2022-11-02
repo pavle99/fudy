@@ -1,6 +1,11 @@
 # Fudy
 
-![Fudy](https://<enter_image>.png)
+![Screenshot_1](https://user-images.githubusercontent.com/73827472/199506017-90f7af9d-22fc-4d33-91ec-f5e644b5984f.png)
+![Screenshot_2](https://user-images.githubusercontent.com/73827472/199506024-0b2ae0be-e960-478e-8843-9a6b3230737c.png)
+![Screenshot_3](https://user-images.githubusercontent.com/73827472/199506026-7354617d-67e1-42ce-921a-896f835e9335.png)
+![Screenshot_4](https://user-images.githubusercontent.com/73827472/199506029-77d7a07f-dadf-4738-bcb6-69c018792c4f.png)
+![Screenshot_5](https://user-images.githubusercontent.com/73827472/199506032-781c45a4-8876-4187-86f4-6bfb19c086e4.png)
+
 
 ## Table of Contents
 
@@ -17,7 +22,7 @@ A desktop-friendly fullstack pizza delivery website focused on beautiful UI usin
 
 ## Link to website demo
 
-[Fudy](https:/<enter_url>/)
+[Fudy](https://fudy.vercel.app/)
 
 ## Tech Stack
 
