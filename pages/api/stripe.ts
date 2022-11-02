@@ -20,8 +20,10 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
         line_items: req.body.map((pizzaItem: PizzaItem) => {
           const img = pizzaItem.pizza.image.asset._ref;
           const newImg = img
-            .replace("image-", "https://cdn.sanity.io/images/3f6l2wv1/production")
+            .replace("image-", "https://cdn.sanity.io/images/3f6l2wv1/production/")
             .replace("-jpg", ".jpg");
+
+          console.log(newImg);
 
           return {
             price_data: {
@@ -32,7 +34,7 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
               },
               unit_amount: pizzaItem.price * 100,
             },
-            ajdustable_quantity: {
+            adjustable_quantity: {
               enabled: false,
             },
             quantity: pizzaItem.quantity,
@@ -43,11 +45,10 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
       };
 
       const session = await stripe.checkout.sessions.create(params);
-      console.log(session);
       res.status(200).json(session);
-    } catch (error) {
+    } catch (error: any) {
       console.log(error);
-      res.status(500).json({ message: "Something went wrong, check console." });
+      res.status(500).json({ message: error.message });
     }
   } else {
     res.setHeader("Allow", "POST");

@@ -8,7 +8,7 @@ import css from "../styles/OrderModal.module.css";
 
 interface IProps {
   opened: boolean;
-  setOpened: React.Dispatch<React.SetStateAction<number | null>>;
+  setOpened?: React.Dispatch<React.SetStateAction<number | null>>;
   paymentMethod: number | null;
 }
 
@@ -45,7 +45,7 @@ const OrderModal = ({ opened, setOpened, paymentMethod }: IProps) => {
   return (
     <Modal
       opened={opened}
-      onClose={() => setOpened(null)}
+      onClose={() => setOpened && setOpened(null)}
       overlayColor={theme.colorScheme === "dark" ? theme.colors.dark[9] : theme.colors.gray[2]}
       overlayOpacity={0.55}
       overlayBlur={3}

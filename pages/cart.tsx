@@ -1,7 +1,9 @@
 import { SanityImageSource } from "@sanity/image-url/lib/types/types";
 import Image from "next/image";
+import Router from "next/router";
 import React from "react";
 import toast, { Toaster } from "react-hot-toast";
+import Stripe from "stripe";
 import Layout from "../components/Layout";
 import OrderModal from "../components/OrderModal";
 import { urlFor } from "../lib/client";
@@ -13,6 +15,7 @@ const Cart = () => {
   const removePizzaItem = useStore((state) => state.removePizzaItem);
 
   const [paymentMethod, setPaymentMethod] = React.useState<number | null>(null);
+  const [order, setOrder] = React.useState(typeof window !== "undefined" && localStorage.getItem("order"));
 
   const calcTotal = () =>
     cartData.pizzaItems.reduce((acc: number, pizzaItem) => acc + pizzaItem.quantity * pizzaItem.price, 0);
@@ -24,7 +27,29 @@ const Cart = () => {
 
   const handleOnDelivery = () => {
     setPaymentMethod(0);
-    typeof window !== "undefined" && localStorage.setItem("total", calcTotal().toString());
+    if (typeof window !== "undefined") {
+      localStorage.setItem("total", calcTotal().toString());
+    }
+  };
+
+  const handleCheckOut = async () => {
+    setPaymentMethod(1);
+    if (typeof window !== "undefined") {
+      localStorage.setItem("total", calcTotal().toString());
+    }
+    const response = await fetch("/api/stripe", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(cartData.pizzaItems),
+    });
+
+    if (response.status === 500) return;
+
+    const data: Stripe.Response<Stripe.Checkout.Session> = await response.json();
+    toast.loading("Redirecting to payment page...");
+    Router.push(data.url ?? "/");
   };
 
   return (
@@ -32,7 +57,7 @@ const Cart = () => {
       <div className={css.container}>
         <div className={css.details}>
           <table className={css.table}>
-            <thead>
+            <tr>
               <th>Pizza</th>
               <th>Name</th>
               <th>Size</th>
@@ -40,7 +65,7 @@ const Cart = () => {
               <th>Quantity</th>
               <th>Total</th>
               <th></th>
-            </thead>
+            </tr>
             <tbody className={css.tbody}>
               {cartData.pizzaItems.length > 0 &&
                 cartData.pizzaItems.map((pizzaItem, index) => {
@@ -81,14 +106,16 @@ const Cart = () => {
             </div>
           </div>
 
-          <div className={css.buttons}>
-            <button className="btn" onClick={handleOnDelivery}>
-              Pay on Delivery
-            </button>
-            <button className="btn" onClick={handleCheckOut}>
-              Pay Now
-            </button>
-          </div>
+          {!order && cartData.pizzaItems.length > 0 && (
+            <div className={css.buttons}>
+              <button className="btn" onClick={handleOnDelivery}>
+                Pay on Delivery
+              </button>
+              <button className="btn" onClick={handleCheckOut}>
+                Pay Now
+              </button>
+            </div>
+          )}
         </div>
       </div>
 
