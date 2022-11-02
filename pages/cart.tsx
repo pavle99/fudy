@@ -85,7 +85,9 @@ const Cart = () => {
             <button className="btn" onClick={handleOnDelivery}>
               Pay on Delivery
             </button>
-            <button className="btn">Pay Now</button>
+            <button className="btn" onClick={handleCheckOut}>
+              Pay Now
+            </button>
           </div>
         </div>
       </div>

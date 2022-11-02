@@ -2,7 +2,7 @@ import create from "zustand";
 import { devtools, persist } from "zustand/middleware";
 import { Pizza } from "../sanity-backend/schemaTypes";
 
-interface PizzaItem {
+export interface PizzaItem {
   pizza: Pizza;
   price: number;
   quantity: number;
